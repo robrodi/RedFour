@@ -17,12 +17,21 @@ use ExUnit.Case
   test "Ev is correct" do
   	ev = Physics.Rocketry.escape_velocity(:earth)
   	assert ev == 11.2
-
   end
 
   test "Ev is correct for another planet" do
   	ev = %{mass: 4.0e22, radius: 6.21e6}
   		|> Physics.Rocketry.escape_velocity
   	assert ev == 1.0
+  end
+
+  test "To Light Seconds is correct for miles" do
+  	lightSeconds = Converter.to_light_seconds({:miles, 1.0e6})
+  	assert lightSeconds == 5
+  end
+
+   test "To Light Seconds is correct for meters" do
+  	lightSeconds = Converter.to_light_seconds({:meters, 1.0e9})
+  	assert lightSeconds == 3
   end
 end

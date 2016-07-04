@@ -8,11 +8,11 @@ defmodule Converter do
     	velocity / 1000
     end
 
-    def to_light_seconds({:miles, miles}) do
+    def to_light_seconds({:miles, miles} = val) do
     	(miles * 5.36819e-6) |> round_down
     end
 
-    def to_light_seconds({:meters, meters}) do
+    def to_light_seconds({:meters, meters} = val) do
     	(meters * 3.335638620368e-9) |> round_down
     end
 
