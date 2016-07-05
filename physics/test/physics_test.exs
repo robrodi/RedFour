@@ -70,12 +70,12 @@ use ExUnit.Case
   end
 
   test "Extra Credit" do
-  	height = Physics.Rocketry.extra_credit_for_me(4.0)
-  	assert height == 12789992.608113231
+  	height = Physics.Rocketry.orbital_height(4.0) |> Converter.round_down
+  	assert height == 6419
   end
 
   test "orbital Term puts the craft in orbit for fourish hours" do
-  	height = 150
+  	height = 7000
   	term = Physics.Rocketry.orbital_term(height)
 
   	assert term >= 4
