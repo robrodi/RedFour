@@ -25,6 +25,7 @@ defmodule SolarTest do
   end
 
   test "Deadliest", %{data: flares} do
-    assert flares |> Solar.deadliest == 99000
+    d =  Solar.deadliest(flares)
+    assert d == 99000
   end
 end
