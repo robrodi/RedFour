@@ -4,8 +4,8 @@ defmodule Converter do
     end
 
 
-    def to_km(velocity) do
-    	velocity / 1000
+    def to_km(val) when is_integer(val) do
+    	val / 1000
     end
 
     def to_meters(distance) do
@@ -30,6 +30,9 @@ defmodule Converter do
     end
     def hours_to_seconds(val)  when is_integer(val) or is_float(val) do
       val * 3600 |> to_nearest_tenth
+    end
+    defp round_to(val, precision) when is_float(val) do
+      Float.round(val, precision)
     end
 end
 
