@@ -8,7 +8,7 @@ defmodule Solar do
 	def flare_list(flares) do
 		Enum.map flares, fn(flare) ->
 			p = power(flare)
-			{:flare, :power, p, :is_deadly, p > 1000}
+			%{power: p, is_deadly: p > 1000}
 		end
 	end
 
