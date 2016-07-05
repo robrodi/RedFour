@@ -69,3 +69,4 @@ use ExUnit.Case
   	assert term == 1.5
   end
 end
+
