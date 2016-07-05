@@ -34,6 +34,6 @@ defmodule SolarTest do
     assert t == 216911.7
   end
   test "the flare list", %{data: flares} do
-    Solar.flare_list(flares) |> IO.inspect
+    Solar.flare_list(flares)
   end
 end
