@@ -18,9 +18,19 @@ use ExUnit.Case
     assert Converter.round_up(12.345) == 13
   end
 
-  test "Ev is correct" do
+  test "Earth Escape Velocity is correct" do
   	ev = Physics.Rocketry.escape_velocity(:earth)
   	assert ev == 11.2
+  end
+  
+  test "Mars Escape Velocity is correct" do
+  	ev = Physics.Rocketry.escape_velocity(:mars)
+  	assert ev == 5.1
+  end
+
+  test "Moon Escape Velocity is correct" do
+  	ev = Physics.Rocketry.escape_velocity(:moon)
+  	assert ev == 2.4
   end
 
   test "Ev is correct for another planet" do
@@ -42,5 +52,10 @@ use ExUnit.Case
   test "To Light Seconds is correct for feet" do
   	lightSeconds = Converter.to_light_seconds({:feet, 1.0e9})
   	assert lightSeconds == 2.0
+  end
+
+  test "Orbital Acceleartion at 100km" do
+  	acceleration = Physics.Rocketry.orbital_acceleration(100)
+  	assert acceleration == 9.515619587729839
   end
 end
