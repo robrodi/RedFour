@@ -38,6 +38,13 @@ defmodule Physics.Rocketry do
     		|> seconds_to_hours
     end
 
+    def extra_credit_for_me(target_time_in_hours) do
+    	secondsSquared = target_time_in_hours |> hours_to_seconds |> squared
+    	numerator = newtons_gravitational_constant * earth.mass * secondsSquared
+    	numerator / (4 * (:math.pi |> squared))
+			|> :math.pow(1/3)    	
+    end
+
     defp orbital_radius(height) do
     	earth.radius + (height |> to_meters)
     end

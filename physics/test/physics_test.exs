@@ -68,5 +68,18 @@ use ExUnit.Case
   	term = Physics.Rocketry.orbital_term(100)
   	assert term == 1.5
   end
+
+  test "Extra Credit" do
+  	height = Physics.Rocketry.extra_credit_for_me(4.0)
+  	assert height == 12789992.608113231
+  end
+
+  test "orbital Term puts the craft in orbit for fourish hours" do
+  	height = 150
+  	term = Physics.Rocketry.orbital_term(height)
+
+  	assert term >= 4
+  	assert term <= 5	
+  end
 end
 
