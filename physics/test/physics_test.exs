@@ -34,8 +34,13 @@ use ExUnit.Case
   	assert lightSeconds == 5
   end
 
-   test "To Light Seconds is correct for meters" do
+  test "To Light Seconds is correct for meters" do
   	lightSeconds = Converter.to_light_seconds({:meters, 1.0e9})
   	assert lightSeconds == 3
+  end
+
+  test "To Light Seconds is correct for feet" do
+  	lightSeconds = Converter.to_light_seconds({:feet, 1.0e9})
+  	assert lightSeconds == 1
   end
 end

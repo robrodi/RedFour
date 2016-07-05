@@ -16,6 +16,10 @@ defmodule Converter do
     	(meters * 3.335638620368e-9) |> round_down
     end
 
+    def to_light_seconds({:feet, feet} = val) do
+    	(feet * 1.016702651488166404e-9) |> round_down
+    end
+
     def round_down(val) when is_float(val), do: trunc(val)
     def round_up(val) when is_float(val), do: Float.ceil(val)
 end
