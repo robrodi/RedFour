@@ -6,7 +6,10 @@ defmodule Solar do
 	def deadliest(flares), do: Enum.map(flares, &(power(&1))) |> Enum.max
 	
 	def flare_list(flares) do
-		for flare <- flares, do: %{power: power(flare), is_deadly: power(flare) > 1000}
+		for flare <- flares, 
+			power <- [power(flare)],
+			is_deadly <- [power > 1000],
+			do: %{power: power, is_deadly: is_deadly}
 	end
 
 	def total_flare_power(flares), do: (for flare <- flares, do: power(flare)) |> Enum.sum
