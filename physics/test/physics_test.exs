@@ -31,16 +31,16 @@ use ExUnit.Case
 
   test "To Light Seconds is correct for miles" do
   	lightSeconds = Converter.to_light_seconds({:miles, 1.0e6})
-  	assert lightSeconds == 5
+  	assert lightSeconds == 6.0
   end
 
   test "To Light Seconds is correct for meters" do
   	lightSeconds = Converter.to_light_seconds({:meters, 1.0e9})
-  	assert lightSeconds == 3
+  	assert lightSeconds == 4.0
   end
 
   test "To Light Seconds is correct for feet" do
   	lightSeconds = Converter.to_light_seconds({:feet, 1.0e9})
-  	assert lightSeconds == 1
+  	assert lightSeconds == 2.0
   end
 end
