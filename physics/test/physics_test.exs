@@ -58,4 +58,14 @@ use ExUnit.Case
   	acceleration = Physics.Rocketry.orbital_acceleration(100)
   	assert acceleration == 9.515619587729839
   end
+
+  test "Orbital Acceleartion at 0km" do
+  	acceleration = Physics.Rocketry.orbital_acceleration(0)
+  	assert acceleration == 9.816728237001842
+  end
+
+  test "orbital Term at 100km above good old earth" do
+  	term = Physics.Rocketry.orbital_term(100)
+  	assert term == 1.5
+  end
 end

@@ -3,6 +3,7 @@ defmodule Converter do
         Float.ceil val, 1
     end
 
+
     def to_km(velocity) do
     	velocity / 1000
     end
@@ -24,6 +25,12 @@ defmodule Converter do
 
     def round_down(val) when is_float(val), do: trunc(val)
     def round_up(val) when is_float(val), do: Float.ceil(val)
+    def seconds_to_hours(val)  when is_integer(val) or is_float(val) do
+      val / 3600 |> to_nearest_tenth
+    end
+    def hours_to_seconds(val)  when is_integer(val) or is_float(val) do
+      val * 3600 |> to_nearest_tenth
+    end
 end
 
 defmodule ConverterTwo do

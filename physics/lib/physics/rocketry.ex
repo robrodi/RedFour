@@ -6,8 +6,8 @@
 # 	{:error, err}  #pattern matches error case, otherwise it worked, and returned result above
 
 defmodule Physics.Rocketry do
-	import Converter
 	import Calcs
+	import Converter
 	import Physics.Laws
 	import Planets
 
@@ -31,6 +31,13 @@ defmodule Physics.Rocketry do
     	(orbital_speed(height) |> squared) / orbital_radius(height)
     end
 
+    def orbital_term(height) do
+    	4 * (:math.pi |> squared) * (orbital_radius(height) |> cubed) / 
+    		(newtons_gravitational_constant * earth.mass)
+    		|> square_root
+    		|> seconds_to_hours
+    end
+
     defp orbital_radius(height) do
     	earth.radius + (height |> to_meters)
     end
@@ -39,4 +46,5 @@ defmodule Physics.Rocketry do
     	2 * newtons_gravitational_constant * mass / radius
     		|> square_root
     end
+
 end
