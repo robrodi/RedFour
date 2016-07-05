@@ -7,7 +7,7 @@ defmodule CompilerProblemTest do
     assert val == 20
   end
 
-  test "rounding an integer" do
+  test "rounding an integer2" do
     val = 1.9 |> round_to
     assert val == 2.0
   end
