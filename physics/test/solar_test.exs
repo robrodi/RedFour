@@ -33,4 +33,7 @@ defmodule SolarTest do
     t = Solar.total_flare_power(flares)
     assert t == 216911.7
   end
+  test "the flare list", %{data: flares} do
+    Solar.flare_list(flares) |> IO.inspect
+  end
 end
