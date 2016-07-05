@@ -28,4 +28,9 @@ defmodule SolarTest do
     d =  Solar.deadliest(flares)
     assert d == 99000
   end
+
+  test "Total Power", %{data: flares} do
+    t = Solar.total_flare_power(flares)
+    assert t == 216911.7
+  end
 end
