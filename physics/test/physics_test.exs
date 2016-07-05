@@ -14,6 +14,10 @@ use ExUnit.Case
     assert Converter.round_down(12.345) == 12
   end
 
+  test "round up" do
+    assert Converter.round_up(12.345) == 13
+  end
+
   test "Ev is correct" do
   	ev = Physics.Rocketry.escape_velocity(:earth)
   	assert ev == 11.2

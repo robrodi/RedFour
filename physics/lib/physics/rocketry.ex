@@ -17,6 +17,7 @@ defmodule Converter do
     end
 
     def round_down(val) when is_float(val), do: trunc(val)
+    def round_up(val) when is_float(val), do: Float.ceil(val)
 end
 
 defmodule Physics.Rocketry do
