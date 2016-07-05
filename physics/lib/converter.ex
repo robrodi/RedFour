@@ -16,6 +16,13 @@ defmodule Converter do
     (inches * 8.472522095734715723e-11) |> round_to(precision)
   end
 
+ def round_to(val) when is_float(val), do: round_to(val, 0)
+ def round_to(val) when is_integer(val), do: val
+
+ def round_to(val, precision) when is_float(val) do
+    Float.round(val, precision)
+  end
+
   def round_to(val, precision) when is_float(val) do
     Float.round(val, precision)
   end
