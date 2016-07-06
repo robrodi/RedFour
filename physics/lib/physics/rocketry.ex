@@ -9,14 +9,7 @@ defmodule Physics.Rocketry do
 	import Calcs
 	import Converter
 	import Physics.Laws
-	import Planets
-
-    def escape_velocity(planet) when is_map(planet) do
-		planet 
-			|> calculate_escape
-			|> to_km
-			|> to_nearest_tenth
-    end
+	import Planet
  
     def orbital_speed(height) do
     	(earth |> gravity) / orbital_radius(height)
@@ -41,6 +34,7 @@ defmodule Physics.Rocketry do
 			|> from_surface
 			|> to_km
     end
+    def from_surface(val), do: val - earth.radius
 
     defp gravity(planet) when is_map(planet) do
     	newtons_gravitational_constant * planet.mass
@@ -48,9 +42,4 @@ defmodule Physics.Rocketry do
     defp orbital_radius(height) do
     	earth.radius + (height |> to_meters)
     end
-    defp calculate_escape(%{mass: mass, radius: radius}) do
-    	2 * newtons_gravitational_constant * mass / radius
-    		|> square_root
-    end
-
 end
