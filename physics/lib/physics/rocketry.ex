@@ -4,42 +4,36 @@
 # alternate idiom:
 #   result
 # 	{:error, err}  #pattern matches error case, otherwise it worked, and returned result above
-
 defmodule Physics.Rocketry do
-	import Calcs
-	import Converter
-	import Physics.Laws
-	import Planet
- 
-    def orbital_speed(height) do
-    	(earth |> gravity) / orbital_radius(height)
-    		|> square_root
-    end
 
-    def orbital_acceleration(height) do
-    	(orbital_speed(height) |> squared) / orbital_radius(height)
-    end
+  import Calcs
+  import Converter
+  import Physics.Laws
+  import Planet
+  
 
-    def orbital_term(height) do
-    	4 * (:math.pi |> squared) * (orbital_radius(height) |> cubed) / 
-    		(earth |> gravity)
-    		|> square_root
-    		|> seconds_to_hours
-    end
+  @earth Planet.select[:earth]
 
-    def orbital_height(target_time_in_hours) do
-    	secondsSquared = target_time_in_hours |> hours_to_seconds |> squared
-    	(earth |> gravity) * secondsSquared  / (4 * (:math.pi |> squared))
-			|> cube_root
-			|> from_surface
-			|> to_km
-    end
-    def from_surface(val), do: val - earth.radius
+  def orbital_acceleration(height), do: orbital_acceleration(@earth,height)
+  def orbital_acceleration(planet, height) do
+    (orbital_speed(planet, height) |> squared) / orbital_radius(planet, height)
+  end
 
-    defp gravity(planet) when is_map(planet) do
-    	newtons_gravitational_constant * planet.mass
-	end
-    defp orbital_radius(height) do
-    	earth.radius + (height |> to_meters)
-    end
+  def orbital_term(height), do: orbital_term(@earth, height)
+  def orbital_term(planet, height) do
+    4 * (:math.pi |> squared) * (orbital_radius(planet,height) |> cubed) / (newtons_gravitational_constant * planet.mass)
+      |> square_root
+      |> seconds_to_hours
+  end
+
+  def orbital_speed(height), do: orbital_speed(@earth,height)
+  def orbital_speed(planet,height) do
+    newtons_gravitational_constant * planet.mass / orbital_radius(planet, height)
+      |> square_root
+  end
+
+  defp orbital_radius(planet, height) do
+    planet.radius + (height |> to_meters)
+  end
+
 end
