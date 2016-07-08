@@ -1,7 +1,15 @@
-defmodule Physics.Database do
-	#Straight Erlang
-	:mnesia.create_table(:user,[
-		{:ramcopies, [node()]},
-		{:attributes, [:name, :email, :first, :last]}
-	 ])
+use Amnesia
+
+defdatabase Physics.Database do
+
+  deftable Planet, [{:id, autoincrement }, :name, :mass, :radius, :type, :ev], type: :ordered_set do
+    #helper methods, lookups, special queries etc can go in here
+    #for instance:
+    #def add_moon(self, moon) do
+      # add to moons table
+    #end
+  end
+  def setup do
+  	
+  end
 end
