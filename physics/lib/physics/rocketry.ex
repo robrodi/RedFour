@@ -9,8 +9,6 @@ defmodule Physics.Rocketry do
   import Calcs
   import Converter
   import Physics.Laws
-  import Planet
-  
 
   @earth Planet.select[:earth]
 

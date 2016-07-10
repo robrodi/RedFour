@@ -64,29 +64,29 @@ defmodule PlanetTest do
 	end
 
 	test "a comprehension with a filter, matched", %{planets: planets} do
-		(for %{name: name, type: type} <- planets, type == :rocky, do: name)|> assert_is_list_of_planet_names(4)  
+		(for %{name: name, type: type} <- planets, type == :rocky, do: name)|> assert_is_list_of_planet_names(4)	
 	end
 
-  test "Earth Escape Velocity is correct" do
-  	ev = Planet.escape_velocity(Planet.earth)
-  	assert ev == 11.2
-  end
-  
-  test "Mars Escape Velocity is correct" do
-  	ev = Planet.escape_velocity(Planet.mars)
-  	assert ev == 5.0
-  end
+	test "Earth Escape Velocity is correct" do
+		ev = Planet.escape_velocity(Planet.earth)
+		assert ev == 11.2
+	end
+	
+	test "Mars Escape Velocity is correct" do
+		ev = Planet.escape_velocity(Planet.mars)
+		assert ev == 5.0
+	end
 
-  test "Moon Escape Velocity is correct" do
-  	ev = Planet.escape_velocity(Planet.moon)
-  	assert ev == 2.4
-  end
+	test "Moon Escape Velocity is correct" do
+		ev = Planet.escape_velocity(Planet.moon)
+		assert ev == 2.4
+	end
 
-  test "Ev is correct for another planet" do
-  	ev = %{mass: 4.0e22, radius: 6.21e6}
-  		|> Planet.escape_velocity
-  	assert ev == 0.9
-  end
+	test "Ev is correct for another planet" do
+		ev = %{mass: 4.0e22, radius: 6.21e6}
+			|> Planet.escape_velocity
+		assert ev == 0.9
+	end
 	defp assert_is_list_of_planet_names(planets), do: assert_is_list_of_planet_names(planets, 8)
 
 	defp assert_is_list_of_planet_names(planets, expected_length) do
@@ -95,7 +95,7 @@ defmodule PlanetTest do
 		assert mercury == "Mercury" 
 	end
 
-  defp first(list) when is_list(list) do
+	defp first(list) when is_list(list) do
 		{:ok, value} = list |> Enum.fetch(0)
 		value
 	end

@@ -8,7 +8,7 @@ defmodule AmnesiaTest do
 	Amnesia.start
 	Physics.Database.create!
 
-	res = Amnesia.transaction! do
+	Amnesia.transaction! do
 	  planets = [
 		%Planet{name: "Mercury", type: :rocky, mass: 3.3e23, radius: 2.439e6},
 		%Planet{name: "Venus", type: :rocky, mass: 4.86e24, radius: 6.05e6},
